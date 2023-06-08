@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../navigation/nav";
-import { Container, InputGroup, FormControl, Button, Row, Card } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
+import SearchInput from "../search-screen/search";
+import AlbumCard from "./album-card";
 
 const client_id = "7ef9e2995db44a4ea55eb166ca757f66";
 const client_secret = "86c419e8c2cf4763892ff8de340ef70d";
 
 function Home() {
-  const [searchInput, setSearchInput] = useState("");
   const [token, setToken] = useState("");
-  const [albums, setAlbums] = useState([{}]);
+  const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
     const authOptions = {
@@ -31,7 +32,7 @@ function Home() {
       });
   }, []);
 
-  async function search() {
+  async function search(searchInput) {
     console.log("searching " + searchInput);
 
     var artistParam = {
@@ -70,34 +71,13 @@ function Home() {
       <Nav />
       <Container>
         <h2 className="font-bold text-2xl">Home</h2>
-        <InputGroup className="mb-3" size="lg">
-          <FormControl
-            placeholder="search for artist"
-            type="input"
-            onKeyPress={(event) => {
-              if (event.key === "Enter") {
-                search();
-              }
-            }}
-            onChange={(event) => {
-              setSearchInput(event.target.value);
-            }}
-          />
-          <Button onClick={search}>Search</Button>
-        </InputGroup>
+        <SearchInput onSearch={search} />
       </Container>
       <Container>
         <Row className="mx-2 row row-cols-4">
-          {albums.map((album, index) => {
-            return (
-              <Card key={index}>
-                <Card.Img src={album.images[0].url}/>
-                <Card.Body>
-                  <Card.Title>{album.name}</Card.Title>
-                </Card.Body>
-              </Card>
-            );
-          })}
+          {albums.map((album, index) => (
+            <AlbumCard key={index} album={album} />
+          ))}
         </Row>
       </Container>
     </div>
