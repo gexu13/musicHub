@@ -1,3 +1,17 @@
-.right-col{
-  margin-top: 40px;
+.right-col {
+  position: relative;
+  margin-top: 50px;
+}
+
+.album-icons {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.heart-icon,
+.bookmark-icon {
+  font-size: 20px;
 }
