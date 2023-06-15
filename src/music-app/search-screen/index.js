@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row } from "react-bootstrap";
-import AlbumCard from "../home-screen/album-card";
+import AlbumCard from "../album/album-card";
 import SearchInput from "../home-screen/search";
 import { useSelector } from "react-redux";
 

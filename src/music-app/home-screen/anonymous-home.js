@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Nav from "../navigation/nav";
 import { Container, Row } from "react-bootstrap";
-import AlbumCard from "./album-card";
+import AlbumCard from "../album/album-card";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchToken } from "../reducers/api-info";
 

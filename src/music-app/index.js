@@ -9,7 +9,8 @@ import SearchScreen from "./search-screen";
 import Nav from "./navigation/nav";
 import { Provider } from "react-redux";
 import { configureStore } from '@reduxjs/toolkit';
-import apiInfo  from "./reducers/api-info"; 
+import apiInfo  from "./reducers/api-info";
+import AlbumDetails from "./album/album-detail"; 
 const store = configureStore({reducer: {apiInfo}});
 
 const MusicApp = () => {
@@ -27,6 +28,7 @@ const MusicApp = () => {
                     <Route path="/login" element={<LoginScreen />} />
                     <Route path="/register" element={<RegisterScreen />} />
                     <Route path="/profile" element={<ProfileScreen />} />
+                    <Route path="/album/:id" element={<AlbumDetails />} />
                 </Routes>
             </div>
         </div>
