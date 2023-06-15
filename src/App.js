@@ -1,15 +1,13 @@
 import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-import Home from "./music-app/home-screen";
-import Bookmark from "./music-app/bookmark-screen";
+import MusicApp from "./music-app";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="container">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/bookmark" element={<Bookmark />} />
+          <Route path="/music/*" element={<MusicApp />} />
         </Routes>
       </div>
     </BrowserRouter>

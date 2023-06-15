@@ -68,7 +68,6 @@ function Home() {
 
   return (
     <div className="flex flex-col">
-      <Nav />
       <Container>
         <h2 className="font-bold text-2xl">Home</h2>
         <SearchInput onSearch={search} />
