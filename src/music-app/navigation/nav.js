@@ -5,6 +5,7 @@ function Nav() {
      <Link className="nav-link" to="/music/home">Home</Link>
      <Link className="nav-link" to="/music/bookmark">Bookmark</Link>
      <Link className="nav-link" to="/music/login">Login</Link>
+     <Link className="nav-link" to="/music/register">Register</Link>
      <Link className="nav-link" to="/music/profile">Profile</Link>
    </nav>
  );
