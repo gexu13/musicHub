@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
       <div className="container">
         <Routes>
-          <Route path="/music/*" element={<MusicApp />} />
+          <Route path="/*" element={<MusicApp />} />
         </Routes>
       </div>
     </BrowserRouter>

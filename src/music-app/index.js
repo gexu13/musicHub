@@ -5,18 +5,24 @@ import Bookmark from "./bookmark-screen/index";
 import LoginScreen from "./login-screen";
 import ProfileScreen from "./profile-screen";
 import RegisterScreen from "./register-screen";
+import SearchScreen from "./search-screen";
 import Nav from "./navigation/nav";
-
+import { Provider } from "react-redux";
+import { configureStore } from '@reduxjs/toolkit';
+import apiInfo  from "./reducers/api-info"; 
+const store = configureStore({reducer: {apiInfo}});
 
 const MusicApp = () => {
 
     return (
+      <Provider store={store}>
         <div>
             <Nav/>
             <div className="container">
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />
+                    <Route path="/search" element={<SearchScreen />} />
                     <Route path="/bookmark" element={<Bookmark />} />
                     <Route path="/login" element={<LoginScreen />} />
                     <Route path="/register" element={<RegisterScreen />} />
@@ -24,6 +30,7 @@ const MusicApp = () => {
                 </Routes>
             </div>
         </div>
+      </Provider>
     )
 };
 
