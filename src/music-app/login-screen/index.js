@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { loginThunk } from '../services/auth-thunks';
 
 const LoginScreen = () => {
 
@@ -8,7 +9,16 @@ const LoginScreen = () => {
     const [password, setPassword] = useState("");
 
     const navigate = useNavigate();
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+
+    const handleLogin = async () => {
+        try {
+            const result = await dispatch(loginThunk({username, password})).unwrap();
+            navigate('/profile'); 
+        } catch (error) {
+            alert("Invalid username or password, please try again");
+        }   
+    };
 
     return (
         
@@ -25,7 +35,7 @@ const LoginScreen = () => {
                         onChange={e => setPassword(e.target.value)}/>
                 </div>
                 <button className="btn btn-primary mt-2" 
-                    // onClick={handleLogin}
+                    onClick={handleLogin}
                     >
                     Login
                 </button>

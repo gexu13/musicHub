@@ -11,7 +11,11 @@ import { Provider } from "react-redux";
 import { configureStore } from '@reduxjs/toolkit';
 import apiInfo  from "./reducers/api-info";
 import AlbumDetails from "./album/album-detail"; 
-const store = configureStore({reducer: {apiInfo}});
+import authReducer from "./reducers/auth-reducer";
+
+
+const store = configureStore({reducer: {apiInfo: apiInfo,
+                                        users: authReducer}});
 
 const MusicApp = () => {
 

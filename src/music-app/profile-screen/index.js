@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { updateUserThunk, logoutThunk } from '../services/auth-thunks';
 
 const ProfileScreen = () => {
 
-    const currentUser = {
-        username: "johndoe",
-        firstName: "John",
-        lastName: "Doe",
-        email: "johndoe@abc.com",
-        password: "123456"
-    }
-
+    const {currentUser} = useSelector(state => state.users);
     const [profile, setProfile] = useState(currentUser);
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const saveProfile = async () => {
+        await dispatch(updateUserThunk(profile));
+    };
 
     return (
         
@@ -27,6 +26,12 @@ const ProfileScreen = () => {
                         <label>Username</label>
                         <input className='form-control'
                             type="text" value={profile.username}
+                            disabled/>
+                    </div>
+                    <div>
+                        <label>User type</label>
+                        <input className='form-control'
+                            type="text" value={profile.userType}
                             disabled/>
                     </div>
                     <div>
@@ -68,16 +73,14 @@ const ProfileScreen = () => {
                 </div>
             )}
             <button className='btn btn-danger mt-2 me-2'
-                    // onClick={() => {
-                    //                 dispatch(logoutThunk());
-                    //                 navigate("/tuiter/login");}
-                    //         }
-                            >
+                    onClick={() => {
+                                    dispatch(logoutThunk());
+                                    navigate("/login");}
+                            }>
                 Logout
             </button>
             <button className='btn btn-primary mt-2'
-                    // onClick={() => {saveProfile()}}
-                    >
+                    onClick={() => {saveProfile()}}>
                 Save
             </button>
         </div>
