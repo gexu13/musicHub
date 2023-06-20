@@ -7,6 +7,16 @@ export const createReview = async ({review, albumId}) => {
   return response.data;
 }
 
+export const findReviewByAuthorId = async (author) => {
+  const response = await api.get(`${Reviews_API}/${author}`);
+  return response.data;
+}
+
+export const findMyReview = async () => {
+  const response = await api.get(`${Reviews_API}/my-reviews`);
+  return response.data;
+}
+
 export const findReview = async (albumId) => {
   const response = await api.get(`${Reviews_API}?albumId=${albumId}`);
   return response.data;

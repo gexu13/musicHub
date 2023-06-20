@@ -9,7 +9,7 @@ import './review.css';
 const ReviewItem = ({ review }) => {
   const { liked, replies, likes, review: content } = review;
 
-  console.log(content);
+  //console.log(content);
 const dispatch = useDispatch();
 const deleteReviewHandler = (id) => {
   dispatch(deleteReview(id));

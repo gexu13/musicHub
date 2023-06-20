@@ -23,7 +23,7 @@ function AlbumDetails() {
       });
   }, [id, token]);
 
-  console.log(album);
+  //console.log(album);
   if (!album) {
     return <div>Loading...</div>;
   }

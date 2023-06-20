@@ -6,7 +6,7 @@ import { useParams } from "react-router";
 
 const ReviewList = () => {
   const {reviews, loading} = useSelector(state => state.reviews)
-  console.log(reviews)
+  //console.log(reviews)
   const dispatch = useDispatch();
   const { id: albumId } = useParams();
   useEffect(() => {

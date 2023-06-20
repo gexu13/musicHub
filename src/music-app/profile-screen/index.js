@@ -1,21 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { updateUserThunk, logoutThunk } from '../services/auth-thunks';
+import * as tuitsService from '../services/reviews-service';
+import { profileThunk } from '../services/auth-thunks';
+import { findMyReview } from '../services/reviews-thunks';
 
 const ProfileScreen = () => {
 
     const {currentUser} = useSelector(state => state.users);
     const [profile, setProfile] = useState(currentUser);
+    const [myReview, setMyReview] = useState([]);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+  
     const saveProfile = async () => {
         await dispatch(updateUserThunk(profile));
     };
 
+    const loadProfile = async () => {
+      const {payload} = await dispatch(profileThunk());
+      setProfile(payload);
+    }
+
+    const fetchMyReview = async () => {
+      const res = await dispatch(findMyReview());
+      setMyReview(res.payload);
+    }
+
+    useEffect(() => {
+      loadProfile();
+      fetchMyReview();
+    }, []);
+
+    console.log(myReview);
     return (
         
         <div>
@@ -83,6 +103,7 @@ const ProfileScreen = () => {
                     onClick={() => {saveProfile()}}>
                 Save
             </button>
+            <pre>{JSON.stringify(myReview, null, 2)}</pre>
         </div>
     )
 }
