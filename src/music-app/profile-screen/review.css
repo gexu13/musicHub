@@ -1,0 +1,35 @@
+.list-group-item{
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.review-stat{
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.text-content {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.review-container {
+  display: flex;
+  align-items: center; 
+}
+
+.image {
+  flex-shrink: 0; 
+}
+
+.content {
+  margin-left: 20px; 
+}
+
+.likes-count{
+  margin-left: 5px;
+}
+
