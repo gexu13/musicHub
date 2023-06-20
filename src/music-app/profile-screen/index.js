@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { updateUserThunk, logoutThunk } from '../services/auth-thunks';
-import * as tuitsService from '../services/reviews-service';
-import { profileThunk } from '../services/auth-thunks';
-import { findMyReview } from '../services/reviews-thunks';
+import * as reviewsService from '../services/reviews-service';
+import { profileThunk} from '../services/auth-thunks';
+import { findMyReviewThunk } from '../services/reviews-thunks';
 
 const ProfileScreen = () => {
 
@@ -20,22 +20,31 @@ const ProfileScreen = () => {
         await dispatch(updateUserThunk(profile));
     };
 
-    const loadProfile = async () => {
-      const {payload} = await dispatch(profileThunk());
-      setProfile(payload);
-    }
+    const fetchProfile = async () => {
+      try {
+        const { payload } = await dispatch(profileThunk(profile));
+        setProfile(payload);
+      } catch (error) {
+        console.error(error);
+        navigate("/login");
+      }
+    };
 
     const fetchMyReview = async () => {
-      const res = await dispatch(findMyReview());
-      setMyReview(res.payload);
-    }
+      const result = await reviewsService.findMyReview();
+      console.log(result);
+      setMyReview(result);
+    };
 
     useEffect(() => {
-      loadProfile();
+      fetchProfile();
       fetchMyReview();
     }, []);
-
+    /*
     console.log(myReview);
+    console.log("profile" + profile);
+    console.log("current user" + currentUser);
+    */
     return (
         
         <div>
@@ -103,7 +112,9 @@ const ProfileScreen = () => {
                     onClick={() => {saveProfile()}}>
                 Save
             </button>
-            <pre>{JSON.stringify(myReview, null, 2)}</pre>
+            MyReview<pre>{JSON.stringify(myReview, null, 2)}</pre>
+            Profile<pre>{JSON.stringify(profile, null, 2)}</pre>
+            currentUser<pre>{JSON.stringify(currentUser, null, 2)}</pre>
         </div>
     )
 }

@@ -13,10 +13,12 @@ export const createReview = createAsyncThunk(
   }
 );
 
-export const findMyReview = createAsyncThunk(
+export const findMyReviewThunk = createAsyncThunk(
   'reviews/findMyReview',
   async () => {
-    return await service.findMyReview();
+    const res = await service.findMyReview();
+    console.log(typeof(res));
+    return res;
   }
 );
 
