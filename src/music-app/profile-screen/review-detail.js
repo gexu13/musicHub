@@ -50,7 +50,8 @@ function ReviewPiece({ review }) {
             </div>
           </div>
         </div>
-        <AiOutlineCloseCircle className="close-icon"/>
+        <AiOutlineCloseCircle className="close-icon"
+        onClick={() => deleteReviewHandler(review._id)}/>
       </div> 
     </li>
   );
