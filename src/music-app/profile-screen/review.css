@@ -18,7 +18,8 @@
 
 .review-container {
   display: flex;
-  align-items: center; 
+  justify-content: space-between;
+  align-items: start;
 }
 
 .image {
@@ -31,5 +32,9 @@
 
 .likes-count{
   margin-left: 5px;
+}
+
+.review-details {
+  display: flex;
 }
 
