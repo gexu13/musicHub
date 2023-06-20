@@ -9,6 +9,7 @@ import './review.css';
 const ReviewItem = ({ review }) => {
   const { liked, replies, likes, review: content } = review;
 
+  console.log(content);
 const dispatch = useDispatch();
 const deleteReviewHandler = (id) => {
   dispatch(deleteReview(id));
@@ -20,7 +21,6 @@ const deleteReviewHandler = (id) => {
         <div className="col-10 review-content">
           <AiOutlineCloseCircle className="bi bi-x-lg float-end"
             onClick={() => deleteReviewHandler(review._id)}/>
-          <div className="fw-bolder">{review.topic}</div>
           <div>{content}</div>
         </div>
       </div>

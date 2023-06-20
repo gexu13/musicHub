@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
 import { BsHeart, BsBookmark } from "react-icons/bs";
+import ReviewList from "../reviews/ReviewList";
+import ReviewResult from "../user-reviews/reviews-result";
 import "./album.css";
 
 function AlbumDetails() {
@@ -46,6 +48,13 @@ function AlbumDetails() {
               <BsBookmark className="bookmark-icon" />
             </div>
           </Col>
+        </Row>
+        <Row>
+            <div className="review-section">
+              <h2>Reviews</h2>
+              <ReviewResult />
+              <ReviewList />
+            </div>
         </Row>
       </Container>
     </div>

@@ -2,14 +2,16 @@ import axios from 'axios';
 const Reviews_API = 'http://localhost:4000/api/reviews';
 const api = axios.create({ withCredentials: true });
 
-export const createReview = async (review) => {
-  const response = await api.post(Reviews_API, review);
+export const createReview = async ({review, albumId}) => {
+  const response = await api.post(Reviews_API, {review: review, albumId: albumId});
   return response.data;
 }
-export const findReview  = async ()     => {
-    const response = await api.get(Reviews_API);
-    return response.data;
+
+export const findReview = async (albumId) => {
+  const response = await api.get(`${Reviews_API}?albumId=${albumId}`);
+  return response.data;
 }
+
 export const deleteReview = async (rid) => {
   const response = await api.delete(`${Reviews_API}/${rid}`);
   return response.data;

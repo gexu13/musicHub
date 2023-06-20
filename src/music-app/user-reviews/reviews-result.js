@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import {createReview} from "../services/reviews-thunks";
 import {useDispatch} from "react-redux";
+import { useParams } from "react-router";
 
 const ReviewResult = () => {
   const [reviewResult, setReviewResult] = useState("");
   const dispatch = useDispatch();
+  const { id: albumId } = useParams();
 
   const reviewClickHandler = () => {
     const newReview = {
-      review: reviewResult
+      review: reviewResult,
+      albumId: albumId,
     }
     dispatch(createReview(newReview));
     setReviewResult("");
