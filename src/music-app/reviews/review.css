@@ -1,0 +1,19 @@
+.heart-icon.liked {
+  color: red;
+}
+
+.review-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.review-content {
+  margin-left: 125px;
+}
+
+.row-below{
+  margin-top: 20px;
+  margin-left: 125px;
+  margin-right: 90px;
+}

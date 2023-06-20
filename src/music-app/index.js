@@ -12,10 +12,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import apiInfo  from "./reducers/api-info";
 import AlbumDetails from "./album/album-detail"; 
 import authReducer from "./reducers/auth-reducer";
+import reviewReducer from "./reducers/review-reducer";
 
 
 const store = configureStore({reducer: {apiInfo: apiInfo,
-                                        users: authReducer}});
+                                        users: authReducer,
+                                        reviews: reviewReducer}});
 
 const MusicApp = () => {
 
