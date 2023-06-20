@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import {useDispatch} from "react-redux";
-import {deleteReview} from "../services/reviews-thunks";
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import './review.css';
 
-function ReviewPiece({ review }) {
+function ReviewPiece({ review, onDelete }) {
   const token = useSelector((state) => state.apiInfo.token);
   const [album, setAlbum] = useState(null);
 
-  const dispatch = useDispatch();
   const deleteReviewHandler = (id) => {
-  dispatch(deleteReview(id));
+  onDelete(id);
 }
 
   useEffect(() => {

@@ -36,6 +36,16 @@ const ProfileScreen = () => {
       setMyReview(result);
     };
 
+    const deleteReview = async (id) => {
+      try {
+        await dispatch(reviewsService.deleteReview(id)); 
+        const updatedReviews = myReview.filter((review) => review._id !== id);
+        setMyReview(updatedReviews);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     useEffect(() => {
       fetchProfile();
       fetchMyReview();
@@ -111,7 +121,7 @@ const ProfileScreen = () => {
               </button>
             </div>
             <div className="review-section">
-              {myReview.map(review => <ReviewPiece key={review._id} review={review}/> )}
+              {myReview.map(review => <ReviewPiece key={review._id} review={review} onDelete={deleteReview}/> )}
               MyReview<pre>{JSON.stringify(myReview, null, 2)}</pre>
               Profile<pre>{JSON.stringify(profile, null, 2)}</pre>
               currentUser<pre>{JSON.stringify(currentUser, null, 2)}</pre>
