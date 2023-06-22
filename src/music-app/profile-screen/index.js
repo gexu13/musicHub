@@ -56,6 +56,7 @@ const ProfileScreen = () => {
         <div>
             <div className="profile-section">
               <h2 className="font-bold text-2xl">Profile</h2>
+              <img className="rounded-circle" src={`../images/${profile.avatar}`} width={60} />
               { profile && 
                   (<div>
                       <div>
@@ -120,12 +121,19 @@ const ProfileScreen = () => {
                   Save
               </button>
             </div>
-            <div className="review-section">
+            {myReview && 
+            <div className="review-section mt-0">
+              <h2 className="font-bold text-2xl">My Reviews</h2>
               {myReview.map(review => <ReviewPiece key={review._id} review={review} onDelete={deleteReview}/> )}
-              MyReview<pre>{JSON.stringify(myReview, null, 2)}</pre>
-              Profile<pre>{JSON.stringify(profile, null, 2)}</pre>
-              currentUser<pre>{JSON.stringify(currentUser, null, 2)}</pre>
             </div>
+            }
+            
+
+
+
+            MyReview<pre>{JSON.stringify(myReview, null, 2)}</pre>
+            Profile<pre>{JSON.stringify(profile, null, 2)}</pre>
+            currentUser<pre>{JSON.stringify(currentUser, null, 2)}</pre>
         </div>
     )
 }

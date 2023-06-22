@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import './review.css';
+import { Link } from 'react-router-dom';
 
 function ReviewPiece({ review, onDelete }) {
   const token = useSelector((state) => state.apiInfo.token);
@@ -28,9 +29,11 @@ function ReviewPiece({ review, onDelete }) {
   }
 
   return (
-    <li className="list-group-item">
+    <li className="list-group-item border border-light border-2 p-3 mb-0 mt-0">
       <div className="review-container">
+        
         <div className="review-details">
+        <Link to={`/album/${review.albumId}`}>
           <div className="image">
             <img
               width={130}
@@ -38,10 +41,14 @@ function ReviewPiece({ review, onDelete }) {
               src={album.images[0]?.url}
               alt={album.name}
             />
+            
           </div>
+          </Link>
           <div className="content">
             <div>
-              <h4>{album.name}</h4>
+              <Link to={`/album/${review.albumId}`}>
+                <h4>{album.name}</h4> 
+              </Link>  
               <div className="text-content">{review.review}</div>
               <div className="review-stat">likes: {review.likes}</div>
             </div>

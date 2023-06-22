@@ -11,13 +11,14 @@ const RegisterScreen = () => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [userType, setUserType] = useState("USER");
+    const [avatar, setAvatar] = useState("test-avatar.png");
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleRegister = async () => {
         try {
-            const result = await dispatch(registerThunk({username, password, firstName, lastName, email, userType})).unwrap();
+            const result = await dispatch(registerThunk({username, password, firstName, lastName, email, userType, avatar})).unwrap();
             navigate('/profile'); 
         }
         catch (error) {

@@ -8,12 +8,12 @@ const ReviewResult = () => {
   const dispatch = useDispatch();
   const { id: albumId } = useParams();
 
-  const reviewClickHandler = () => {
+  const reviewClickHandler = async () => {
     const newReview = {
       review: reviewResult,
       albumId: albumId,
     }
-    dispatch(createReview(newReview));
+    await dispatch(createReview(newReview));
     setReviewResult("");
   };
 
