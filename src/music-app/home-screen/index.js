@@ -8,6 +8,7 @@ import Anonymous from "./anonymous-home";
 function Home() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.apiInfo.token);
+  const currentUser = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(fetchToken());
@@ -18,7 +19,7 @@ function Home() {
       <Container>
         <h2 className="font-bold text-2xl">Home</h2>
       </Container>
-      <Anonymous />
+      {!currentUser && <Anonymous />}
     </div>
   );
 }
