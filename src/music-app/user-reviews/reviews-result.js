@@ -2,13 +2,23 @@ import React, { useState } from "react";
 import {createReview} from "../services/reviews-thunks";
 import {useDispatch} from "react-redux";
 import { useParams } from "react-router";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ReviewResult = () => {
+
+  const {currentUser} = useSelector(state => state.users);
   const [reviewResult, setReviewResult] = useState("");
   const dispatch = useDispatch();
   const { id: albumId } = useParams();
+  const navigate = useNavigate();
 
   const reviewClickHandler = async () => {
+    if(currentUser === null) {
+      alert("Please login to review");
+      navigate("/login");
+      // return;
+    }
     const newReview = {
       review: reviewResult,
       albumId: albumId,

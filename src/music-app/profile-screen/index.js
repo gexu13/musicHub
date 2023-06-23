@@ -55,10 +55,10 @@ const ProfileScreen = () => {
         
         <div>
             <div className="profile-section">
-              <h2 className="font-bold text-2xl">Profile</h2>
-              <img className="rounded-circle" src={`../images/${profile.avatar}`} width={60} />
+              <h2 className="font-bold text-2xl">My Profile</h2>
               { profile && 
                   (<div>
+                     <img className="rounded-circle" src={`../images/${profile.avatar}`} width={60} />
                       <div>
                           <label>Username</label>
                           <input className='form-control'

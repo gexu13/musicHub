@@ -56,7 +56,7 @@ const displayTime = () => {
         <div className="col-auto">
           {/* <Link to={`/profile/${author?._id}`}> */}
           
-          <Link to="/profile">
+          <Link to={`/profile/${author?._id}`}>
           <img className="rounded-circle" src={`../images/${author?.avatar}`} width={60} />
           </Link>
         </div>
@@ -67,10 +67,7 @@ const displayTime = () => {
         </div> */}
         <div className="col-10">
             <span className="fw-bolder me-1">
-            {/* <Link className="text-decoration-none text-dark" to={`/profile/${author?._id}`}> */}
-
-
-            <Link className="text-decoration-none text-dark" to="/profile">
+            <Link className="text-decoration-none text-dark" to={`/profile/${author?._id}`}>
               {author?.username}
             </Link>
             </span> · {displayTime()}

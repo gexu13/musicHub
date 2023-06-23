@@ -1,5 +1,6 @@
 import axios from 'axios';
 const Reviews_API = 'http://localhost:4000/api/reviews';
+
 const api = axios.create({ withCredentials: true });
 
 export const createReview = async ({review, albumId}) => {
@@ -9,7 +10,6 @@ export const createReview = async ({review, albumId}) => {
 
 export const findMyReview = async () => {
   const response = await api.get(`${Reviews_API}/my-reviews`);
-  //console.log(response.data);
   //console.log("response" + response);
   return response.data;
 }
@@ -20,7 +20,7 @@ export const findReview = async (albumId) => {
 }
 
 export const deleteReview = async (rid) => {
-  const response = await api.delete(`${Reviews_API}/${rid}`);
+  const response = await axios.delete(`${Reviews_API}/${rid}`);
   return response.data;
 }
 export const updateReview = async (review) => {
@@ -29,6 +29,6 @@ export const updateReview = async (review) => {
 }
 
 export const findReviewByAuthorId = async (uid) => {
-  const response = await axios.get(`${Reviews_API}/${uid}`);
+  const response = await axios.get(`${Reviews_API}/author/${uid}`);
   return response.data;
 }
