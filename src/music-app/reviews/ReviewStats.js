@@ -19,14 +19,11 @@ const ReviewStats = ({ likes, liked }) => {
     <div className="review-stats">
       <div className="review-stats">
         {isLiked ? (
-          <BsHeartFill className="heart-icon liked" onClick={handleLike} />
+          <BsHeartFill className="heart-icon liked mr-2" onClick={handleLike} />
         ) : (
-          <BsHeart className="heart-icon" onClick={handleLike} />
+          <BsHeart className="heart-icon mr-2" onClick={handleLike} />
         )}
         {likesCount}
-      </div>
-      <div className="review-stats">
-        <BsShare />
       </div>
     </div>
   );

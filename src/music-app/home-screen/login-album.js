@@ -24,21 +24,22 @@ function LoginAlbum({ review }) {
   }
 
   return (
-        <div className="review-details">
-        <Link to={`/details/${review.albumId}`}>
-          <Card>
-            <Card.Img src={album.images[0]?.url} />
-            <Card.Body>
-              <Card.Title>              
-                <Link to={`/album/${review.albumId}`}>
-                <h4>{album.name}</h4> 
-                </Link>  
-              </Card.Title>
-            </Card.Body>
-          </Card>
-          </Link>
-        </div>
+    <div className="review-details">
+      <Link to={`/details/${review.albumId}`} style={{ textDecoration: "none", color: "black" }}>
+        <Card>
+          <Card.Img src={album.images[0]?.url} />
+          <Card.Body className="d-none d-lg-block">
+            <Card.Title>              
+              <Link to={`/album/${review.albumId}`} style={{ textDecoration: "none", color: "black" }}>
+                {album.name}
+              </Link>  
+            </Card.Title>
+          </Card.Body>
+        </Card>
+      </Link>
+    </div>
   );
+  
 
 }
 

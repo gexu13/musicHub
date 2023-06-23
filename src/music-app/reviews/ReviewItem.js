@@ -50,44 +50,34 @@ const displayTime = () => {
 };
 
 
-  return (
-    <li className="list-group-item mt-0 mb-0">
-      <div className="row">
-        <div className="col-auto">
-          {/* <Link to={`/profile/${author?._id}`}> */}
-          
-          <Link to={`/profile/${author?._id}`}>
+return (
+  <li className="list-group-item mt-0 mb-0">
+    <div className="row d-flex">
+      <div className="col-xl-1 col-lg-2 col-md-3 d-none d-md-flex align-items-center justify-content-center">
+        <Link to={`/profile/${author?._id}`}>
           <img className="rounded-circle" src={`../images/${author?.avatar}`} width={60} />
+        </Link>
+      </div>
+      <div className="col-xl-11 col-lg-10 col-md-9 col-sm-12 col-12">
+        <span className="fw-bolder me-1">
+          <Link className="text-decoration-none text-dark" to={`/profile/${author?._id}`}>
+            {author?.username}
           </Link>
-        </div>
-        {/* <div className="col-10 review-content">
+        </span> · {displayTime()}
+        <div>
           <AiOutlineCloseCircle className="bi bi-x-lg float-end"
             onClick={() => deleteReviewHandler(review._id)}/>
           <div>{content}</div>
-        </div> */}
-        <div className="col-10">
-            <span className="fw-bolder me-1">
-            <Link className="text-decoration-none text-dark" to={`/profile/${author?._id}`}>
-              {author?.username}
-            </Link>
-            </span> · {displayTime()}
-            <div>
-              <AiOutlineCloseCircle className="bi bi-x-lg float-end"
-                onClick={() => deleteReviewHandler(review._id)}/>
-            <div>{content}</div>
-            </div>
+        </div>
+        <div className="row-below">
+          <ReviewStats replies={replies} likes={likes} liked={liked} />
         </div>
       </div>
+    </div>
+  </li>
+);
 
-      <div className="row-below">
-        <ReviewStats replies={replies} likes={likes} liked={liked} />
-      </div>
-    </li>
 
-    
-
-    
-  );
 };
 
 export default ReviewItem;

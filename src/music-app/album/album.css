@@ -2,10 +2,6 @@
   position: relative;
 }
 
-.album-info {
-  margin-top: 50px;
-}
-
 .album-icons {
   position: absolute;
   bottom: 20px;
@@ -14,10 +10,12 @@
   margin-top: 10px;
 }
 
+/*
 .heart-icon,
 .bookmark-icon {
   font-size: 20px;
 }
+*/
 
 .review-section{
   padding-top: 50px;
