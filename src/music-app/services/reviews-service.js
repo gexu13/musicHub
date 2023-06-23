@@ -27,3 +27,8 @@ export const updateReview = async (review) => {
   const response = await api.put(`${Reviews_API}/${review._id}`, review);
   return response.data;
 }
+
+export const findReviewByAuthorId = async (uid) => {
+  const response = await axios.get(`${Reviews_API}/${uid}`);
+  return response.data;
+}

@@ -19,7 +19,8 @@ function Home() {
       <Container>
         <h2 className="font-bold text-2xl">Home</h2>
       </Container>
-      {!currentUser.currentUser && <Anonymous />}
+      {/* {!currentUser.currentUser && <Anonymous />} */}
+      <Anonymous />
     </div>
   );
 }

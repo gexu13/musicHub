@@ -3,7 +3,7 @@ import ReviewStats from './ReviewStats';
 import {useDispatch} from "react-redux";
 import {deleteReview} from "../services/reviews-thunks";
 import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { findUserById } from '../services/auth-service';
+import { findUserById } from '../services/users-service';
 import { useState } from 'react';
 import './review.css';
 import { Link } from 'react-router-dom';
@@ -67,6 +67,9 @@ const displayTime = () => {
         </div> */}
         <div className="col-10">
             <span className="fw-bolder me-1">
+            {/* <Link className="text-decoration-none text-dark" to={`/profile/${author?._id}`}> */}
+
+
             <Link className="text-decoration-none text-dark" to="/profile">
               {author?.username}
             </Link>
