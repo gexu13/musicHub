@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 
