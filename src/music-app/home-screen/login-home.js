@@ -1,20 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Nav from "../navigation/nav";
 import { Container, Row } from "react-bootstrap";
-import AlbumCard from "../album/album-card";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchToken } from "../reducers/api-info";
 import * as reviewsService from '../services/reviews-service';
-import { useNavigate } from 'react-router-dom';
 import LoginAlbum from "./login-album";
 
 function LoginHome() {
   const [myReview, setMyReview] = useState([]);
   const [uniqueAlbums, setUniqueAlbums] = useState([]);
-
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const fetchMyReview = async () => {
     const result = await reviewsService.findMyReview();
