@@ -4,6 +4,7 @@ import { Container } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchToken } from "../reducers/api-info";
 import Anonymous from "./anonymous-home";
+import LoginHome from "./login-home";
 
 function Home() {
   const dispatch = useDispatch();
@@ -17,10 +18,9 @@ function Home() {
   return (
     <div className="flex flex-col">
       <Container>
-        <h2 className="font-bold text-2xl">Home</h2>
       </Container>
-      {/* {!currentUser.currentUser && <Anonymous />} */}
-      <Anonymous />
+      {!currentUser.currentUser && <Anonymous />}
+      {currentUser.currentUser && <LoginHome />}
     </div>
   );
 }

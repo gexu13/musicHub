@@ -32,6 +32,7 @@ function Anonymous() {
   return (
     <div className="flex flex-col">
       <Container>
+      <h2 className="font-bold text-2xl">Home</h2>
         <Row className="mx-2 row row-cols-4">
           {newReleases.map((album, index) => (
             <AlbumCard key={index} album={album} />
