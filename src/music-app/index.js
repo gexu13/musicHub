@@ -35,7 +35,7 @@ const MusicApp = () => {
                     <Route path="/login" element={<LoginScreen />} />
                     <Route path="/register" element={<RegisterScreen />} />
                     <Route path="/profile" element={<ProfileScreen />} />
-                    <Route path="/album/:id" element={<AlbumDetails />} />
+                    <Route path="/details/:id" element={<AlbumDetails />} />
                     <Route path="/profile/:uid" element={<OthersProfileScreen/>} />
                 </Routes>
             </div>

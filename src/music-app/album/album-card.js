@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function AlbumCard({ album }) {
   return (
-    <Link to={`/album/${album.id}`}>
+    <Link to={`/details/${album.id}`}>
       <Card>
         <Card.Img src={album.images[0].url} />
         <Card.Body>

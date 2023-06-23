@@ -54,7 +54,7 @@ const ProfileScreen = () => {
     return (
         
         <div>
-            <div className="profile-section">
+            <div className="profile-section mt-2">
               <h2 className="font-bold text-2xl">My Profile</h2>
               { profile && 
                   (<div>

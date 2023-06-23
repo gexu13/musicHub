@@ -23,7 +23,7 @@ const LoginScreen = () => {
     return (
         
         <div>
-            <h2 className="font-bold text-2xl">Login</h2>
+            <h2 className="font-bold text-2xl mt-2">Login</h2>
                 <div className="mt-2">
                     <label>Username</label>
                     <input className="form-control" type="text" value={username} 

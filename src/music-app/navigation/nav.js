@@ -16,9 +16,9 @@ function Nav() {
   };
 
  return (
-  <div className="row">
+  <div className="row sticky-top bg-white">
     <div className="col-8">
-      <nav className="nav nav-tabs mb-2">
+      <nav className="nav nav-tabs ">
         <Link className="nav-link" to="/home">Home</Link>
         <Link className="nav-link" to="/search">Search</Link>
         <Link className="nav-link" to="/bookmark">Bookmark</Link>

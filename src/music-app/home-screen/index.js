@@ -18,9 +18,9 @@ function Home() {
   return (
     <div className="flex flex-col">
       <Container>
+        {currentUser.currentUser && <LoginHome />}
+        <Anonymous />
       </Container>
-      {!currentUser.currentUser && <Anonymous />}
-      {currentUser.currentUser && <LoginHome />}
     </div>
   );
 }

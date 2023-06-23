@@ -43,7 +43,7 @@ function Search() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-2">
       <Container>
         <h2 className="font-bold text-2xl">Search</h2>
         <SearchInput onSearch={search} />

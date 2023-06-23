@@ -29,7 +29,7 @@ const RegisterScreen = () => {
     return (
         
         <div>
-            <h2 className="font-bold text-2xl">Register</h2>
+            <h2 className="font-bold text-2xl mt-2">Register</h2>
             <div className='mt-2'>
                 <label>Username</label>
                 <input className='form-control' type="text" value={username}

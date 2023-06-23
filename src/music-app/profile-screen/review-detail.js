@@ -33,7 +33,7 @@ function ReviewPiece({ review, onDelete }) {
       <div className="review-container">
         
         <div className="review-details">
-        <Link to={`/album/${review.albumId}`}>
+        <Link to={`/details/${review.albumId}`}>
           <div className="image">
             <img
               width={130}
