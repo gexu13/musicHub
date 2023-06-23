@@ -25,7 +25,6 @@ function LoginAlbum({ review }) {
   }
 
   return (
- 
         <div className="review-details">
         <Link to={`/album/${review.albumId}`}>
           <Card>
