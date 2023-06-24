@@ -32,7 +32,7 @@ const MusicApp = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/search" element={<SearchScreen />} />
-                    {/* <Route path= "/search/:keyword" element={<SearchScreen />} /> */}
+                    <Route path= "/search/:keyword" element={<SearchScreen />} />
                     <Route path="/bookmark" element={<Bookmark />} />
                     <Route path="/login" element={<LoginScreen />} />
                     <Route path="/register" element={<RegisterScreen />} />

@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
 import AlbumCard from "../album/album-card";
 import SearchInput from "../home-screen/search";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router";
+import { InputGroup, FormControl, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function Search() {
   const token = useSelector((state) => state.apiInfo.token);
-  
+  const { keyword } = useParams();
+  const [searchInput, setSearchInput] = useState(keyword);
+  const navigate = useNavigate();
   
   const [albums, setAlbums] = useState([]);
 
@@ -45,11 +50,47 @@ function Search() {
     setAlbums(albumsResponse);
   }
 
+  function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      search(searchInput);
+    }
+  }
+
+  function handleChange(event) {
+    setSearchInput(event.target.value);
+  }
+
+  // function handleSearch() {
+  //   search(searchInput);
+  // }
+
+
+  useEffect(() => {
+    if(keyword){
+      setSearchInput(keyword);
+      search(searchInput);
+    }
+  }, [keyword]);
+
+
   return (
     <div className="flex flex-col mt-2">
       <Container>
         <h2 className="font-bold text-2xl">Search</h2>
-        <SearchInput onSearch={search} />
+        {/* <SearchInput onSearch={search} /> */}
+
+        <InputGroup className="mb-3" size="lg">
+      <FormControl
+        placeholder="search for artist"
+        type="input"
+        value={searchInput}
+        onKeyPress={handleKeyPress}
+        onChange={handleChange}
+      />
+      <Button onClick={() => navigate(`/search/${searchInput}`)}>Search</Button>
+    </InputGroup>
+
+
       </Container>
       <Container>
         <Row className="mx-2 row row-cols-4">
@@ -58,6 +99,9 @@ function Search() {
           ))}
         </Row>
       </Container>
+      keyword: {JSON.stringify(keyword)}
+      <br/>
+      searchInput: {JSON.stringify(searchInput)}
     </div>
   );
 }
