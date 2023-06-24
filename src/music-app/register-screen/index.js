@@ -19,7 +19,17 @@ const RegisterScreen = () => {
 
     const handleRegister = async () => {
         try {
-            const result = await dispatch(registerThunk({username, password, firstName, lastName, email, userType, avatar})).unwrap();
+            const newUser = {
+                username: username,
+                password: password,
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                userType: userType,
+                avatar: avatar,
+                stageName: stageName
+            };
+            const result = await dispatch(registerThunk(newUser)).unwrap();
             navigate('/profile'); 
         }
         catch (error) {
