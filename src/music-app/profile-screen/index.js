@@ -47,11 +47,9 @@ const ProfileScreen = () => {
     };
 
     useEffect(() => {
-      if (currentUser !== profile) {
-        fetchProfile();
-      }
+      fetchProfile();
       fetchMyReview();
-    }, [currentUser]);
+    }, []);
 
     return (
         
