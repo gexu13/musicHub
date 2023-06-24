@@ -12,7 +12,7 @@ function Search() {
   const { keyword } = useParams();
   const [searchInput, setSearchInput] = useState(keyword);
   const navigate = useNavigate();
-  
+
   const [albums, setAlbums] = useState([]);
 
   async function search(searchInput) {
@@ -22,7 +22,7 @@ function Search() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        "Authorization": "Bearer " + token,
       },
       
     };
@@ -61,9 +61,6 @@ function Search() {
     setSearchInput(event.target.value);
   }
 
-  // function handleSearch() {
-  //   search(searchInput);
-  // }
 
 
   useEffect(() => {
@@ -73,6 +70,7 @@ function Search() {
     }
   }, [keyword]);
 
+  console.log("search token" + token);
 
   return (
     <div className="flex flex-col mt-2">

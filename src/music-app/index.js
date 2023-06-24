@@ -15,35 +15,45 @@ import authReducer from "./reducers/auth-reducer";
 import reviewReducer from "./reducers/review-reducer";
 import OthersProfileScreen from "./profile-screen/others-profile";
 import ArtistHome from "./home-screen/artist-home";
+import { fetchTokenThunk } from "./reducers/api-info";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 
-const store = configureStore({reducer: {apiInfo: apiInfo,
-                                        users: authReducer,
-                                        reviews: reviewReducer}});
+const client_id = "7ef9e2995db44a4ea55eb166ca757f66";
+const client_secret = "86c419e8c2cf4763892ff8de340ef70d";
 
 const MusicApp = () => {
 
+  const dispatch = useDispatch();
+
+  const fetchToken = async () => {
+    await dispatch(fetchTokenThunk());
+  };
+
+  useEffect(() => {
+    fetchToken();
+  }, []);
+
     return (
-      <Provider store={store}>
         <div>
-            <Nav/>
-            <div className="container">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/search" element={<SearchScreen />} />
-                    <Route path= "/search/:keyword" element={<SearchScreen />} />
-                    <Route path="/bookmark" element={<Bookmark />} />
-                    <Route path="/login" element={<LoginScreen />} />
-                    <Route path="/register" element={<RegisterScreen />} />
-                    <Route path="/profile" element={<ProfileScreen />} />
-                    <Route path="/details/:id" element={<AlbumDetails />} />
-                    <Route path="/profile/:uid" element={<OthersProfileScreen/>} />
-                    <Route path="/artist-home" element={<ArtistHome/>} />
-                </Routes>
-            </div>
+          <Nav/>
+          <div className="container">
+              <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/search" element={<SearchScreen />} />
+                  <Route path= "/search/:keyword" element={<SearchScreen />} />
+                  <Route path="/bookmark" element={<Bookmark />} />
+                  <Route path="/login" element={<LoginScreen />} />
+                  <Route path="/register" element={<RegisterScreen />} />
+                  <Route path="/profile" element={<ProfileScreen />} />
+                  <Route path="/details/:id" element={<AlbumDetails />} />
+                  <Route path="/profile/:uid" element={<OthersProfileScreen/>} />
+                  <Route path="/artist-home" element={<ArtistHome/>} />
+              </Routes>
+          </div>
         </div>
-      </Provider>
     )
 };
 

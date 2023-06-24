@@ -3,16 +3,11 @@ import Nav from "../navigation/nav";
 import { Container, Row } from "react-bootstrap";
 import AlbumCard from "../album/album-card";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchToken } from "../reducers/api-info";
 
 function Anonymous() {
   const dispatch = useDispatch();
   const token = useSelector(state => state.apiInfo.token);
   const [newReleases, setNewReleases] = useState([]);
-
-  useEffect(() => {
-    dispatch(fetchToken());
-  }, [dispatch]);
 
   useEffect(() => {
     if (token) {
