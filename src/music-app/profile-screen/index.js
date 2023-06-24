@@ -6,6 +6,7 @@ import { updateUserThunk, logoutThunk } from '../services/auth-thunks';
 import * as reviewsService from '../services/reviews-service';
 import { profileThunk} from '../services/auth-thunks';
 import ReviewPiece from './review-detail';
+import { deleteReview } from '../services/reviews-thunks';
 
 const ProfileScreen = () => {
 
@@ -36,20 +37,21 @@ const ProfileScreen = () => {
       setMyReview(result);
     };
 
-    const deleteReview = async (id) => {
+    const deleteMyReview = async (id) => {
       try {
-        await dispatch(reviewsService.deleteReview(id)); 
-        const updatedReviews = myReview.filter((review) => review._id !== id);
-        setMyReview(updatedReviews);
+        await dispatch(deleteReview(id)); 
+        fetchMyReview();
       } catch (error) {
         console.error(error);
       }
     };
 
     useEffect(() => {
-      fetchProfile();
+      if (currentUser !== profile) {
+        fetchProfile();
+      }
       fetchMyReview();
-    }, []);
+    }, [currentUser]);
 
     return (
         
@@ -134,7 +136,7 @@ const ProfileScreen = () => {
             {myReview && 
             <div className="review-section mt-0">
               <h2 className="font-bold text-2xl">My Reviews</h2>
-              {myReview.map(review => <ReviewPiece key={review._id} review={review} onDelete={deleteReview}/> )}
+              {myReview.map(review => <ReviewPiece key={review._id} review={review} onDelete={deleteMyReview}/> )}
             </div>
             }
             

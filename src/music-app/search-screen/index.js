@@ -53,6 +53,7 @@ function Search() {
   function handleKeyPress(event) {
     if (event.key === "Enter") {
       search(searchInput);
+      navigate(`/search/${searchInput}`)
     }
   }
 
