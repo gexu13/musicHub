@@ -46,7 +46,7 @@ function ReviewPiece({ review, onDelete }) {
           </Link>
           <div className="content">
             <div>
-              <Link to={`/album/${review.albumId}`}>
+              <Link to={`/details/${review.albumId}`}>
                 <h4>{album.name}</h4> 
               </Link>  
               <div className="text-content">{review.review}</div>

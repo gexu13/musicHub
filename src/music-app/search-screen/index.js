@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 
 function Search() {
   const token = useSelector((state) => state.apiInfo.token);
+  
+  
   const [albums, setAlbums] = useState([]);
 
   async function search(searchInput) {
@@ -17,6 +19,7 @@ function Search() {
         "Content-Type": "application/json",
         Authorization: "Bearer " + token,
       },
+      
     };
 
     var artistId = await fetch(

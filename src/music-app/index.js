@@ -14,6 +14,7 @@ import AlbumDetails from "./album/album-detail";
 import authReducer from "./reducers/auth-reducer";
 import reviewReducer from "./reducers/review-reducer";
 import OthersProfileScreen from "./profile-screen/others-profile";
+import ArtistHome from "./home-screen/artist-home";
 
 
 const store = configureStore({reducer: {apiInfo: apiInfo,
@@ -31,12 +32,14 @@ const MusicApp = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/search" element={<SearchScreen />} />
+                    {/* <Route path= "/search/:keyword" element={<SearchScreen />} /> */}
                     <Route path="/bookmark" element={<Bookmark />} />
                     <Route path="/login" element={<LoginScreen />} />
                     <Route path="/register" element={<RegisterScreen />} />
                     <Route path="/profile" element={<ProfileScreen />} />
                     <Route path="/details/:id" element={<AlbumDetails />} />
                     <Route path="/profile/:uid" element={<OthersProfileScreen/>} />
+                    <Route path="/artist-home" element={<ArtistHome/>} />
                 </Routes>
             </div>
         </div>

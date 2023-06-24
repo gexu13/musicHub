@@ -89,6 +89,16 @@ const ProfileScreen = () => {
                                   setProfile(newProfile);
                           }}/>
                       </div>
+                      {profile.userType === 'ARTIST' && (
+                      <div>
+                          <label>Aritist</label>
+                          <input className='form-control'
+                              type="text" value={profile.stageName}
+                              onChange={(e) => {
+                                  const newProfile = {...profile, stageName: e.target.value};
+                                  setProfile(newProfile);
+                          }}/>
+                      </div>)}
                       <div>
                           <label>Email</label>
                           <input className='form-control'

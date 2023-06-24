@@ -10,6 +10,7 @@ const RegisterScreen = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
+    const [stageName, setStageName] = useState("");
     const [userType, setUserType] = useState("USER");
     const [avatar, setAvatar] = useState("test-avatar.png");
 
@@ -54,6 +55,12 @@ const RegisterScreen = () => {
                 <input className='form-control' type="text" value={lastName}
                     onChange={e => setLastName(e.target.value)}/>
             </div>
+            {userType === "ARTIST" &&
+            <div className='mt-2'>
+                <label>Stage Name</label>
+                <input className='form-control' type="text" value={stageName}
+                    onChange={e => setStageName(e.target.value)}/>
+            </div>}
             <div className='mt-2'>
                 <label>Email</label>
                 <input className='form-control' type="email" value={email}
