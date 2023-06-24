@@ -45,14 +45,18 @@ function AlbumDetails() {
             <div className="album-info">
               <h4>Artist: {album.artists[0].name}</h4>
               <h4>Release Date: {album.release_date}</h4>
-              <a href={album.external_urls.spotify} target="_blank" rel="noopener noreferrer"   style={{ textDecoration: 'none'}}><h4>Spotify Album Link</h4></a>
+              <div>
+                <a href={album.external_urls.spotify} target="_blank" rel="noopener noreferrer"   style={{ textDecoration: 'none'}}><h4>Spotify Album Link</h4></a>
+              </div>
               <h4>Total Tracks: {album.total_tracks}</h4>
             </div>
             <div>
               <ul className="list-group mt-4">
                 {tracks && tracks.map((track) => (
                   <li className="list-group-item m-0" key={track.id}>
-                  <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none'}}><h5>{track.name}</h5></a>
+                    <div>
+                      <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none'}}><h5>{track.name}</h5></a>
+                    </div>
                   {/*                  
                   <audio className="float-end" controls src={track.external_urls.spotify}>
                   </audio> */}
