@@ -14,6 +14,8 @@ function Nav() {
         <Link className="nav-link" to="/home">Home</Link>
         {(currentUser && currentUser.userType === "ARTIST") 
           &&<Link className="nav-link" to="/artist-home">Artist's home</Link>}
+        {(currentUser && currentUser.userType === "ADMIN") 
+          &&<Link className="nav-link" to="/admin-home">User Data</Link>}
         <Link className="nav-link" to="/search">Search</Link>
         {/* <Link className="nav-link" to="/bookmark">Bookmark</Link> */}
         <Link className="nav-link" to="/login">Login</Link>

@@ -19,6 +19,12 @@ export const findReview = async (albumId) => {
   return response.data;
 }
 
+export const findAllReview = async () => {
+  const response = await axios.get(`${Reviews_API}/admin/allReviews/all`);
+  const reviews= response.data;
+  return reviews;
+ }
+
 export const deleteReview = async (rid) => {
   const response = await axios.delete(`${Reviews_API}/${rid}`);
   return response.data;

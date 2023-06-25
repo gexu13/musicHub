@@ -6,6 +6,11 @@ export const findReview = createAsyncThunk(
   async (albumId) => await service.findReview(albumId)
 );
 
+export const findAllReview = createAsyncThunk(
+  'reviews/findAllReview',
+  async () => await service.findAllReview()
+);
+
 export const createReview = createAsyncThunk(
   'reviews/createReview',
   async ({review, albumId}) => {
