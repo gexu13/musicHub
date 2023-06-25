@@ -13,7 +13,7 @@ function Nav() {
       <nav className="nav nav-tabs ">
         <Link className="nav-link" to="/home">Home</Link>
         {(currentUser && currentUser.userType === "ARTIST") 
-          &&<Link className="nav-link" to="/artist-home">Artist's home</Link>}
+          &&<Link className="nav-link" to="/artist-home">Your Albums</Link>}
         {(currentUser && currentUser.userType === "ADMIN") 
           &&<Link className="nav-link" to="/admin-home">User Data</Link>}
         <Link className="nav-link" to="/search">Search</Link>
