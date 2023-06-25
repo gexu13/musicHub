@@ -23,7 +23,9 @@ function AdminUser({ user, onDelete }) {
           <div className="user-type mt-2 ml-2">{user.userType}</div>
         </div>
         <div className="user-info ml-4">
-          <div className="user-name">{user.username}</div>
+          <Link className="text-decoration-none text-dark" to={`/profile/${user._id}`}>
+            <div className="user-name fw-bolder ">{user.username}</div>
+          </Link>
           <div className="user-email">{user.email}</div>
         </div>
         <button 

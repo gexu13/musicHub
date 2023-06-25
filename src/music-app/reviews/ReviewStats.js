@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { BsChatSquare, BsHeart, BsHeartFill, BsShare } from 'react-icons/bs';
 import './review.css'
 
-const ReviewStats = ({ likes, liked }) => {
+const ReviewStats = ({ review, likes, liked }) => {
   const [isLiked, setIsLiked] = useState(liked);
   const [likesCount, setLikesCount] = useState(likes);
 
   const handleLike = () => {
     if (isLiked) {
-      setLikesCount(likesCount - 1);
+      setLikesCount(review?.likes - 1);
     } else {
-      setLikesCount(likesCount + 1);
+      setLikesCount(review?.likes + 1);
     }
     setIsLiked(!isLiked);
   };
@@ -23,7 +23,8 @@ const ReviewStats = ({ likes, liked }) => {
         ) : (
           <BsHeart className="heart-icon mr-2" onClick={handleLike} />
         )}
-        {likesCount}
+        {review?.likes}
+        {JSON.stringify(review?.likes)}
       </div>
     </div>
   );

@@ -65,8 +65,8 @@ return (
           </Link>
         </span> · {displayTime()}
         <div>
-          <AiOutlineCloseCircle className="bi bi-x-lg float-end"
-            onClick={() => deleteReviewHandler(review._id)}/>
+          {/* <AiOutlineCloseCircle className="bi bi-x-lg float-end"
+            onClick={() => deleteReviewHandler(review._id)}/> */}
           <div>{content}</div>
         </div>
         <div className="row-below">
