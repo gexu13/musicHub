@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { fetchUserByIdThunk } from '../services/users-thunk'
 
@@ -23,7 +22,7 @@ function AdminReview({ review, onDelete }) {
       .then((res) => res.json())
       .then((data) => {
         setAlbum(data);
-      });
+    });
 
     dispatch(fetchUserByIdThunk(review.author))
       .then((res) => {
@@ -41,15 +40,15 @@ function AdminReview({ review, onDelete }) {
     <li className="list-group-item border border-light border-2 p-3 mb-0 mt-0">
       <div className="review-container">
         <div className="review-details">
-        <Link to={`/details/${review.albumId}`}>
-          <div className="image">
-            <img
-              width={130}
-              className="rounded-3"
-              src={album.images[0]?.url}
-              alt={album.name}
-            />
-          </div>
+          <Link to={`/details/${review.albumId}`}>
+            <div className="image">
+              <img
+                width={130}
+                className="rounded-3"
+                src={album.images[0]?.url}
+                alt={album.name}
+              />
+            </div>
           </Link>
           <div className="content">
             <div>

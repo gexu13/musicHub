@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import Nav from "../navigation/nav";
 import { Container, Row } from "react-bootstrap";
 import AlbumCard from "../album/album-card";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 
 function Anonymous() {
-  const dispatch = useDispatch();
   const token = useSelector(state => state.apiInfo.token);
   const [newReleases, setNewReleases] = useState([]);
 
@@ -25,7 +24,7 @@ function Anonymous() {
 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mt-2">
       <Container>
       <h2 className="font-bold text-2xl">Home</h2>
         <Row className="mx-2 row row-cols-4">

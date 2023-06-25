@@ -20,7 +20,7 @@ function LoginHome() {
   }, []);
 
   return (
-    <div className="flex flex-col mt-2">
+    <div className="flex flex-col mt-2 mb-6">
       <Container>
         <h2 className="font-bold text-2xl">Recent Reviewed</h2>
         <Row className="mx-2 row row-cols-4">

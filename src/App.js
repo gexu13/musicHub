@@ -6,12 +6,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import apiInfo  from "./music-app/reducers/api-info";
 import authReducer from "./music-app/reducers/auth-reducer";
 import reviewReducer from "./music-app/reducers/review-reducer";
+import userReducer from "./music-app/reducers/user-reducer";
 import { Provider } from "react-redux";
 
 
 const store = configureStore({reducer: {apiInfo: apiInfo,
   users: authReducer,
-  reviews: reviewReducer}});
+  reviews: reviewReducer,
+  manageUsers: userReducer}});
 
 
 function App() {
