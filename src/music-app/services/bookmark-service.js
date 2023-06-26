@@ -20,6 +20,7 @@ export const createBookmark = async (userId, albumId) => {
 };
 
 export const findBookmarkByUserId = async (idObject) => {
+  console.log("idObject111111111111");
   const response = await api.post(`${Bookmarks_API}/user/currentbookmark`, idObject);
   return response.data;
 }

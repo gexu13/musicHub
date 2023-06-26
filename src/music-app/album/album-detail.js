@@ -25,6 +25,7 @@ function AlbumDetails() {
   const user = useSelector((state) => state.users.currentUser);
   const [isBookemarked, setIsBookmarked] = useState(false);
   const [myBookmarked, setMyBookmarked] = useState(false);
+  const [currentbookmark, setCurrentBookmark] = useState(null);
 
 
   console.log(album);
@@ -47,8 +48,8 @@ function AlbumDetails() {
       navigate("/login");
       return;
     }
-    if (isBookemarked) {
-      dispatch(deleteBookmarkThunk(id)).then(() => {
+    if (isBookemarked === true) {
+       dispatch(deleteBookmarkThunk(currentbookmark._id)).then(() => {
         setIsBookmarked(false);
       });
     } else {
@@ -59,14 +60,17 @@ function AlbumDetails() {
   };
 
   const findBookmark = async () => {
-    console.log("222");
-    const response = await findAlbumLikeByUserId({ albumId: id, userId: currentUser._id,});
+    console.log("2223333123123123123");
+    const response = await findBookmarkByUserId ({ albumId: id, userId: currentUser._id,});
+    // console.log("albumId", id);
+    // console.log("userId", currentUser._id);
     console.log("11111111", response);
       if (response === null) {
         setIsBookmarked(false);
         return;
       }
       setIsBookmarked(true);
+      setCurrentBookmark(response);
   };
 
 
@@ -144,9 +148,6 @@ function AlbumDetails() {
                     <div>
                       <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none'}}><h5>{track.name}</h5></a>
                     </div>
-                  {/*                  
-                  <audio className="float-end" controls src={track.external_urls.spotify}>
-                  </audio> */}
                   </li>
                 ))}
               </ul>
