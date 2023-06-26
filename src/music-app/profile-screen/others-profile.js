@@ -101,14 +101,6 @@ const OthersProfileScreen = () => {
                     <h2 className="font-bold text-2xl">{author?.username}'s Likes</h2>
                         {userLikes.map((like, index) => <OthersLikesDetail key = {index} userLikes={like} /> )}
                 </div>
-                
-
-
-            author:{JSON.stringify(author)}
-            <br />
-            review:{JSON.stringify(review)}
-            <br />
-            likes:{JSON.stringify(userLikes)}
             
         </div>
     )

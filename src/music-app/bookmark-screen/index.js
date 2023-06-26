@@ -44,11 +44,9 @@ function Bookmark() {
           {bookmarks.map(bookmark=> <BookmarkPiece key={bookmark._id} bookmark={bookmark} onDelete={deleteMyBookmark}/> )}
         </div>
         }
-
-        MyBookmark<pre>{JSON.stringify(bookmarks, null, 2)}</pre>
     </div>
 )
- };
+};
 
  
  export default Bookmark;

@@ -11,6 +11,7 @@ import { createBookmarkThunk, deleteBookmarkThunk } from "../services/bookmark-t
 import { likeAlbum } from "../services/albums-service";
 import { useNavigate } from "react-router-dom";
 import { findAlbumLikeByUserId, deleteLikedAlbum } from "../services/albums-service";
+import { findBookmarkByUserId } from "../services/bookmark-service";
 
 function AlbumDetails() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function AlbumDetails() {
   const navigate = useNavigate();
   const user = useSelector((state) => state.users.currentUser);
   const [isBookemarked, setIsBookmarked] = useState(false);
+  const [myBookmarked, setMyBookmarked] = useState(false);
 
 
   console.log(album);
@@ -40,24 +42,37 @@ function AlbumDetails() {
   }, [id, token]);
 
   const handleBookmark = () => {
-    if (isBookemarked) {
-      dispatch(deleteBookmarkThunk(id)).then(() => {
-        setIsBookmarked(!isBookemarked);
-      });
-    } else {
-      dispatch(createBookmarkThunk({userId: user._id, albumId: id})).then(() => {
-        setIsBookmarked(!isBookemarked);
-      });      
-    }
-  };
-
-
-  const likeAlbumHandler = async () => {
     if (currentUser === null) {
       alert("Please login to like an album");
       navigate("/login");
       return;
     }
+    if (isBookemarked) {
+      dispatch(deleteBookmarkThunk(id)).then(() => {
+        setIsBookmarked(false);
+      });
+    } else {
+      dispatch(createBookmarkThunk({userId: user._id, albumId: id})).then(() => {
+        setIsBookmarked(true);
+      });      
+    }
+  };
+
+  const findBookmark = async () => {
+    console.log("222");
+    const response = await findAlbumLikeByUserId({ albumId: id, userId: currentUser._id,});
+    console.log("11111111", response);
+      if (response === null) {
+        setIsBookmarked(false);
+        return;
+      }
+      setIsBookmarked(true);
+  };
+
+
+
+  const likeAlbumHandler = async () => {
+    
 
     if (likedAlbum === false) {
       const response = await likeAlbum(id, {
@@ -90,6 +105,7 @@ function AlbumDetails() {
   useEffect(() => {
     if (currentUser) {
       findAlbumLike();
+      findBookmark();
     }
     
   }, []);
@@ -176,7 +192,6 @@ function AlbumDetails() {
               <ReviewList />
             </div>
         </Row>
-        likeAlbum {JSON.stringify(likedAlbum)}
       </Container>
     </div>
   );

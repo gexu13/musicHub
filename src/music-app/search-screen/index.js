@@ -98,9 +98,6 @@ function Search() {
           ))}
         </Row>
       </Container>
-      keyword: {JSON.stringify(keyword)}
-      <br/>
-      searchInput: {JSON.stringify(searchInput)}
     </div>
   );
 }

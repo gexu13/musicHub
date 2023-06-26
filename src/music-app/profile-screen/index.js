@@ -168,12 +168,6 @@ const ProfileScreen = () => {
               {myLikes.map(like => <LikesDetail key={like._id} myLikes={like} onDelete={deleteMyLike}/> )}
             </div>
             }
-
-
-            {/* all liked album<pre>{JSON.stringify(albmeLikes, null, 2)}</pre> */}
-            MyReview<pre>{JSON.stringify(myReview, null, 2)}</pre>
-            Profile<pre>{JSON.stringify(profile, null, 2)}</pre>
-            currentUser<pre>{JSON.stringify(currentUser, null, 2)}</pre>
         </div>
     )
 }
