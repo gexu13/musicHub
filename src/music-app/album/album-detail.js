@@ -162,9 +162,13 @@ function AlbumDetails() {
                 </button>)
               }
                  {isBookemarked ? (
-                  <BsBookmarkFill className="bookmark-icon liked mr-2" onClick={handleBookmark} />
+                  <button className="mt-0">
+                    <BsBookmarkFill className="bookmark-icon liked mr-2" onClick={handleBookmark} />
+                  </button>
                 ) : (
-                <BsBookmark className="bookmark-icon mr-2" onClick={handleBookmark} />
+                  <button className="mt-0">
+                    <BsBookmark className="bookmark-icon mr-2" onClick={handleBookmark} />
+                  </button>
                 )}
               </div>
 
