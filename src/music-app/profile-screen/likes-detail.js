@@ -49,7 +49,7 @@ function LikesDetail({ myLikes, onDelete}) {
           <div className="content">
             <div>
               <Link to={`/details/${myLikes?.albumId}`}>
-                <h4>{myLikes?.name}</h4> 
+                <h4 className='d-none d-md-block'>{myLikes?.name}</h4> 
               </Link>  
               {/* <div className="text-content">{review.review}</div> */}
               <div className="review-stat">likes: {myLikes?.likes}</div>

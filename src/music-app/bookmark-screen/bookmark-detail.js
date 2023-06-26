@@ -46,7 +46,7 @@ function BookmarkPiece({ bookmark, onDelete }) {
           <div className="content">
             <div>
               <Link to={`/details/${bookmark.albumId}`}>
-                <h4>{album.name}</h4> 
+                <h4 className='d-none d-md-block'>{album.name}</h4> 
               </Link> 
             </div>
           </div>

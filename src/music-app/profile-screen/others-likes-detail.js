@@ -47,7 +47,7 @@ function OhtersLikesDetail({ userLikes, onDelete }) {
           <div className="content">
             <div>
               <Link to={`/details/${userLikes?.albumId}`}>
-                <h4>{userLikes?.name}</h4> 
+                <h4 className='d-none d-md-block'>{userLikes?.name}</h4> 
               </Link>  
               {/* <div className="text-content">{review.review}</div> */}
               <div className="review-stat">likes: {userLikes?.likes}</div>
