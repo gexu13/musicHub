@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
-import { BsHeart, BsBookmark, BsHeartFill } from "react-icons/bs";
+import { BsHeart, BsBookmark, BsBookmarkFill, BsHeartFill } from "react-icons/bs";
 import ReviewList from "../reviews/ReviewList";
 import ReviewResult from "../user-reviews/reviews-result";
 import "./album.css";
+import { useDispatch } from 'react-redux';
+import { createBookmarkThunk, deleteBookmarkThunk } from "../services/bookmark-thunk";
 import { likeAlbum } from "../services/albums-service";
 import { useNavigate } from "react-router-dom";
 import { findAlbumLikeByUserId, deleteLikedAlbum } from "../services/albums-service";
 
 function AlbumDetails() {
+  const dispatch = useDispatch();
   const {currentUser} = useSelector(state => state.users);
   const { id } = useParams();
   const token = useSelector((state) => state.apiInfo.token);
@@ -18,6 +21,8 @@ function AlbumDetails() {
   const [tracks, setTracks] = useState([]);
   const [likedAlbum, setLikedAlbum] = useState(false);
   const navigate = useNavigate();
+  const user = useSelector((state) => state.users.currentUser);
+  const [isBookemarked, setIsBookmarked] = useState(false);
 
 
   console.log(album);
@@ -33,6 +38,19 @@ function AlbumDetails() {
         setTracks(data.tracks.items);
       });
   }, [id, token]);
+
+  const handleBookmark = () => {
+    if (isBookemarked) {
+      dispatch(deleteBookmarkThunk(id)).then(() => {
+        setIsBookmarked(!isBookemarked);
+      });
+    } else {
+      dispatch(createBookmarkThunk({userId: user._id, albumId: id})).then(() => {
+        setIsBookmarked(!isBookemarked);
+      });      
+    }
+  };
+
 
   const likeAlbumHandler = async () => {
     if (currentUser === null) {
@@ -116,15 +134,22 @@ function AlbumDetails() {
                   </li>
                 ))}
               </ul>
+              <div className="album-icons">
               { (likedAlbum) ?
-                (<button className="mt-3"
+                (<button className="mt-0"
                   onClick={likeAlbumHandler}> <BsHeartFill className="heart-icon liked" />
                 </button>)
                 :
-                (<button className="mt-3"
+                (<button className="mt-0"
                   onClick={likeAlbumHandler}> <BsHeart className="heart-icon" />
                 </button>)
               }
+                 {isBookemarked ? (
+                  <BsBookmarkFill className="bookmark-icon liked mr-2" onClick={handleBookmark} />
+                ) : (
+                <BsBookmark className="bookmark-icon mr-2" onClick={handleBookmark} />
+                )}
+              </div>
 
                 {/* { !(likeAlbum) && 
                 <button className="mt-3"

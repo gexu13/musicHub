@@ -2,6 +2,10 @@
   color: red;
 }
 
+.bookmark-icon.liked {
+  color: orange;
+}
+
 .review-stats {
   display: flex;
   justify-content: space-between;

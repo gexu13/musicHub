@@ -8,12 +8,15 @@ import authReducer from "./music-app/reducers/auth-reducer";
 import reviewReducer from "./music-app/reducers/review-reducer";
 import userReducer from "./music-app/reducers/user-reducer";
 import { Provider } from "react-redux";
+import bookmarkReducer from "./music-app/reducers/bookmark-reducer";
 
 
 const store = configureStore({reducer: {apiInfo: apiInfo,
   users: authReducer,
   reviews: reviewReducer,
-  manageUsers: userReducer}});
+  manageUsers: userReducer,
+  bookmarks: bookmarkReducer
+}});
 
 
 function App() {
