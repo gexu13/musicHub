@@ -2,16 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Container, Row, Col } from "react-bootstrap";
-import { BsHeart, BsBookmark } from "react-icons/bs";
+import { BsHeart, BsBookmark, BsHeartFill } from "react-icons/bs";
 import ReviewList from "../reviews/ReviewList";
 import ReviewResult from "../user-reviews/reviews-result";
 import "./album.css";
+import { likeAlbum } from "../services/albums-service";
+import { useNavigate } from "react-router-dom";
+import { findAlbumLikeByUserId, deleteLikedAlbum } from "../services/albums-service";
 
 function AlbumDetails() {
+  const {currentUser} = useSelector(state => state.users);
   const { id } = useParams();
   const token = useSelector((state) => state.apiInfo.token);
   const [album, setAlbum] = useState(null);
   const [tracks, setTracks] = useState([]);
+  const [likedAlbum, setLikedAlbum] = useState(false);
+  const navigate = useNavigate();
+
+
   console.log(album);
   useEffect(() => {
     fetch(`https://api.spotify.com/v1/albums/${id}`, {
@@ -25,6 +33,51 @@ function AlbumDetails() {
         setTracks(data.tracks.items);
       });
   }, [id, token]);
+
+  const likeAlbumHandler = async () => {
+    if (currentUser === null) {
+      alert("Please login to like an album");
+      navigate("/login");
+      return;
+    }
+
+    if (likedAlbum === false) {
+      const response = await likeAlbum(id, {
+      name: album.name,
+      artist: album.artists[0].name,
+      image: album.images[0].url,
+      });
+      setLikedAlbum(true);
+    }
+      else {
+        const response = await deleteLikedAlbum(id);
+          setLikedAlbum(false);
+      }
+        
+  };
+
+
+  const findAlbumLike = async () => {
+    const response = await findAlbumLikeByUserId({
+      albumId: id,
+      userId: currentUser._id,});
+    
+      if (response === null) {
+        setLikedAlbum(false);
+        return;
+      }
+    setLikedAlbum(true);
+  };
+
+  useEffect(() => {
+    if (currentUser) {
+      findAlbumLike();
+    }
+    
+  }, []);
+
+
+
 
   //console.log(album);
   if (!album) {
@@ -63,6 +116,26 @@ function AlbumDetails() {
                   </li>
                 ))}
               </ul>
+              { (likedAlbum) ?
+                (<button className="mt-3"
+                  onClick={likeAlbumHandler}> <BsHeartFill className="heart-icon liked" />
+                </button>)
+                :
+                (<button className="mt-3"
+                  onClick={likeAlbumHandler}> <BsHeart className="heart-icon" />
+                </button>)
+              }
+
+                {/* { !(likeAlbum) && 
+                <button className="mt-3"
+                  onClick={likeAlbumHandler}> <BsHeart className="heart-icon" />
+                </button>
+                } 
+                { (likeAlbum) && 
+                <button className="mt-3"
+                  onClick={likeAlbumHandler}> <BsHeartFill className="heart-icon liked" />
+                </button>
+              } */}
             </div>
             {/*
               <div className="album-icons">
@@ -78,6 +151,7 @@ function AlbumDetails() {
               <ReviewList />
             </div>
         </Row>
+        likeAlbum {JSON.stringify(likedAlbum)}
       </Container>
     </div>
   );

@@ -7,6 +7,8 @@ import { findUserById } from '../services/users-service';
 import { useState } from 'react';
 import * as reviewsService from '../services/reviews-service';
 import OthersReviewPiece from './others-reviewDetail';
+import { findLikedAlbumsByUserId } from '../services/albums-service';
+import OthersLikesDetail from './others-likes-detail';
 
 
 
@@ -21,12 +23,19 @@ const OthersProfileScreen = () => {
 
     const [author, setAuthor] = useState();
     const [review, setReview] = useState([]);
+    const [userLikes, setUserLikes] = useState([]);
 
     const fetchAuthorReview = async () => {
         const result = await reviewsService.findReviewByAuthorId(uid);
-        console.log(result);
         setReview(result);
-      };
+    };
+
+    const fetchUsersLikedAlbums = async () => {
+        console.log("123123123123123");
+        const result = await findLikedAlbumsByUserId(uid);
+        setUserLikes(result);
+    };
+
 
     useEffect(() => {
 
@@ -40,6 +49,7 @@ const OthersProfileScreen = () => {
             };
             findAuthor();
             fetchAuthorReview();
+            fetchUsersLikedAlbums();
         }
     }, []);
 
@@ -90,12 +100,19 @@ const OthersProfileScreen = () => {
                     <h2 className="font-bold text-2xl">{author?.username}'s Reviews</h2>
                         {review.map((review, index) => <OthersReviewPiece key = {index} review={review} /> )}
                 </div>
+
+                <div className="review-section mt-0">
+                    <h2 className="font-bold text-2xl">{author?.username}'s Likes</h2>
+                        {userLikes.map((like, index) => <OthersLikesDetail key = {index} userLikes={like} /> )}
+                </div>
                 
 
 
             author:{JSON.stringify(author)}
             <br />
             review:{JSON.stringify(review)}
+            <br />
+            likes:{JSON.stringify(userLikes)}
             
         </div>
     )

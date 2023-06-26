@@ -7,12 +7,15 @@ import * as reviewsService from '../services/reviews-service';
 import { profileThunk} from '../services/auth-thunks';
 import ReviewPiece from './review-detail';
 import { deleteReview } from '../services/reviews-thunks';
+import { findLikedAlbums } from '../services/albums-service';
+import LikesDetail from './likes-detail';
 
 const ProfileScreen = () => {
 
     const {currentUser} = useSelector(state => state.users);
     const [profile, setProfile] = useState(currentUser);
     const [myReview, setMyReview] = useState([]);
+    const [myLikes, setMyLikes] = useState([]);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -31,9 +34,14 @@ const ProfileScreen = () => {
       }
     };
 
+    const fetchLikedAlbums = async () => {
+      const result = await findLikedAlbums();
+      console.log(result);
+      setMyLikes(result);
+    };
+
     const fetchMyReview = async () => {
       const result = await reviewsService.findMyReview();
-      console.log(result);
       setMyReview(result);
     };
 
@@ -49,6 +57,7 @@ const ProfileScreen = () => {
     useEffect(() => {
       fetchProfile();
       fetchMyReview();
+      fetchLikedAlbums();
     }, []);
 
     return (
@@ -137,10 +146,15 @@ const ProfileScreen = () => {
               {myReview.map(review => <ReviewPiece key={review._id} review={review} onDelete={deleteMyReview}/> )}
             </div>
             }
-            
+            {myLikes && 
+            <div className="review-section mt-0">
+              <h2 className="font-bold text-2xl">My Likes</h2>
+              {myLikes.map(like => <LikesDetail key={like._id} myLikes={like} onDelete={deleteMyReview}/> )}
+            </div>
+            }
 
 
-
+            MyLikes<pre>{JSON.stringify(myLikes, null, 2)}</pre>
             MyReview<pre>{JSON.stringify(myReview, null, 2)}</pre>
             Profile<pre>{JSON.stringify(profile, null, 2)}</pre>
             currentUser<pre>{JSON.stringify(currentUser, null, 2)}</pre>
