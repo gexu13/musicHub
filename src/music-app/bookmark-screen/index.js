@@ -7,7 +7,7 @@ import BookmarkPiece from './bookmark-detail';
 
 function Bookmark() {
   const {currentUser} = useSelector(state => state.users);
-  console.log(currentUser);
+  // console.log(currentUser);
   const id = currentUser.id;
   const bookmarks = useSelector(state => state.bookmarks.bookmarks);
 
@@ -16,9 +16,9 @@ function Bookmark() {
 
 
   const fetchMyBookmark= async () => {
-    console.log("fetchMyBookmark");
+    // console.log("fetchMyBookmark");
     const result = await dispatch(findBookmarkThunk());
-    console.log(result);
+    // console.log(result);
   };
 
   const deleteMyBookmark = async (id) => {

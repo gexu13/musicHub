@@ -16,7 +16,6 @@ function Search() {
   const [albums, setAlbums] = useState([]);
 
   async function search(searchInput) {
-    console.log("searching " + searchInput);
 
     var artistParam = {
       method: "GET",
@@ -70,7 +69,7 @@ function Search() {
     }
   }, [keyword]);
 
-  console.log("search token" + token);
+  // console.log("search token" + token);
 
   return (
     <div className="flex flex-col mt-2">

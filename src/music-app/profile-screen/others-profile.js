@@ -97,7 +97,7 @@ const OthersProfileScreen = () => {
                         {review.map((review, index) => <OthersReviewPiece key = {index} review={review} /> )}
                 </div>
 
-                <div className="review-section mt-0">
+                <div className="mt-0">
                     <h2 className="font-bold text-2xl">{author?.username}'s Likes</h2>
                         {userLikes.map((like, index) => <OthersLikesDetail key = {index} userLikes={like} /> )}
                 </div>

@@ -27,7 +27,6 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: {
     [fetchTokenThunk.fulfilled]: (state, action) => {
-      console.log("fetchTokenThunk.fulfilled"+ action.payload);
       state.token = action.payload;
     }
   }

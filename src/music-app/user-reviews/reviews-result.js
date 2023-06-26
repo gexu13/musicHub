@@ -33,7 +33,7 @@ const ReviewResult = () => {
         <textarea
           value={reviewResult}
           placeholder="Write your review here..."
-          className="form-control border-0"
+          className="form-control border-0 form-control"
           onChange={(event) => setReviewResult(event.target.value)}
         ></textarea>
         <div>

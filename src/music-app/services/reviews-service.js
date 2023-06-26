@@ -29,8 +29,8 @@ export const deleteReview = async (rid) => {
   const response = await axios.delete(`${Reviews_API}/${rid}`);
   return response.data;
 }
-export const updateReview = async (review) => {
-  const response = await api.put(`${Reviews_API}/${review._id}`, review);
+export const updateReview = async (newReview) => {
+  const response = await api.put(`${Reviews_API}/update/${newReview._id}`, newReview);
   return response.data;
 }
 

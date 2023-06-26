@@ -7,14 +7,15 @@ import { findUserById } from '../services/users-service';
 import { useState } from 'react';
 import './review.css';
 import { Link } from 'react-router-dom';
+import { AiFillLike } from 'react-icons/ai';
+import { updateReviewThunk } from '../services/reviews-thunks';
 
 
 const ReviewItem = ({ review }) => {
 
   const { liked, replies, likes, review: content } = review;
+  const [updatedLikes, setUpdatedLikes] = useState(likes);
   const [author, setAuthor] = useState();
-
-  
 
   useEffect(() => {
     const findAuthor = async() => {
@@ -29,6 +30,13 @@ const dispatch = useDispatch();
 const deleteReviewHandler = (id) => {
   dispatch(deleteReview(id));
 }
+
+const handleLike = async () => {
+
+  await dispatch(updateReviewThunk({...review, liked: true, likes: updatedLikes + 1}));
+  setUpdatedLikes(updatedLikes + 1);
+
+};
 
 
 const displayTime = () => {
@@ -70,7 +78,19 @@ return (
           <div>{content}</div>
         </div>
         <div className="row-below">
-          <ReviewStats replies={replies} likes={likes} liked={liked} />
+        <div className="review-stats">
+          <button onClick={handleLike}>
+            <AiFillLike className='text-danger d-inline me-1'/> {updatedLikes}
+          </button>
+          {/* {isLiked ? (
+            <BsHeartFill className="heart-icon liked mr-2" onClick={handleLike} />
+          ) : (
+            <BsHeart className="heart-icon mr-2" onClick={handleLike} />
+          )}
+          {review?.likes}
+          {JSON.stringify(review?.likes)} */}
+            </div>
+          {/* <ReviewStats myReview={review}/> */}
         </div>
       </div>
     </div>

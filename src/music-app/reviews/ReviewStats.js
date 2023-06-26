@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 import { BsChatSquare, BsHeart, BsHeartFill, BsShare } from 'react-icons/bs';
 import './review.css'
+import { AiFillLike } from 'react-icons/ai';
 
-const ReviewStats = ({ review, likes, liked }) => {
-  const [isLiked, setIsLiked] = useState(liked);
-  const [likesCount, setLikesCount] = useState(likes);
+const ReviewStats = ({myReview}) => {
+  const [likesCount, setLikesCount] = useState(myReview?.likes);
 
   const handleLike = () => {
-    if (isLiked) {
-      setLikesCount(review?.likes - 1);
-    } else {
-      setLikesCount(review?.likes + 1);
-    }
-    setIsLiked(!isLiked);
+
+    setLikesCount(myReview?.likes + 1);
+
   };
 
   return (
     <div className="review-stats">
       <div className="review-stats">
-        {isLiked ? (
+        <button className="">
+          <AiFillLike className='text-danger d-inline me-1'/> {myReview?.likes}
+        </button>
+        {/* {isLiked ? (
           <BsHeartFill className="heart-icon liked mr-2" onClick={handleLike} />
         ) : (
           <BsHeart className="heart-icon mr-2" onClick={handleLike} />
         )}
         {review?.likes}
-        {JSON.stringify(review?.likes)}
+        {JSON.stringify(review?.likes)} */}
+        {myReview}
       </div>
     </div>
   );

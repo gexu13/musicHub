@@ -39,7 +39,7 @@ const ProfileScreen = () => {
 
     const fetchLikedAlbums = async () => {
       const result = await findLikedAlbums();
-      console.log(result);
+      // console.log(result);
       setMyLikes(result);
     };
 
@@ -163,7 +163,7 @@ const ProfileScreen = () => {
             </div>
             }
             {myLikes && 
-            <div className="review-section mt-0">
+            <div className="mt-0">
               <h2 className="font-bold text-2xl">My Likes</h2>
               {myLikes.map(like => <LikesDetail key={like._id} myLikes={like} onDelete={deleteMyLike}/> )}
             </div>

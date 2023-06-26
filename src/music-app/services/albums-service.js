@@ -10,7 +10,6 @@ export const likeAlbum = async (albumId, album) => {
 };
 
 export const findLikedAlbums = async () => {
-    console.log("findLikedAlbums");
     const response = await api.get(`${Albums_API}/user/likes`);
     return response.data;
 };

@@ -28,7 +28,6 @@ function AlbumDetails() {
   const [currentbookmark, setCurrentBookmark] = useState(null);
 
 
-  console.log(album);
   useEffect(() => {
     fetch(`https://api.spotify.com/v1/albums/${id}`, {
       headers: {
@@ -64,7 +63,6 @@ function AlbumDetails() {
     const response = await findBookmarkByUserId ({ albumId: id, userId: currentUser._id,});
     // console.log("albumId", id);
     // console.log("userId", currentUser._id);
-    console.log("11111111", response);
       if (response === null) {
         setIsBookmarked(false);
         return;
