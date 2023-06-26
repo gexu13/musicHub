@@ -43,7 +43,7 @@ function AlbumDetails() {
 
   const handleBookmark = () => {
     if (currentUser === null) {
-      alert("Please login to like an album");
+      alert("Please login to bookmark an album");
       navigate("/login");
       return;
     }
@@ -74,7 +74,11 @@ function AlbumDetails() {
 
 
   const likeAlbumHandler = async () => {
-    
+    if (currentUser === null) {
+      alert("Please login to like an album");
+      navigate("/login");
+      return;
+    }
 
     if (likedAlbum === false) {
       const response = await likeAlbum(id, {

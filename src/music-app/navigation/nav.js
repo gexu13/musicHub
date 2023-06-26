@@ -41,11 +41,12 @@ function Nav() {
             <span className="d-xs-inline d-md-none"><BsSearch/></span>
           </Link>
         {/* <Link className="nav-link" to="/bookmark">Bookmark</Link> */}
-        {(!currentUser && 
+        {/* {(!currentUser &&  */}
           <Link className="nav-link" to="/login">
             <span className="d-none d-md-inline">Login</span>
             <span className="d-xs-inline d-md-none"><AiOutlineLogin/></span>
-          </Link>)}
+          </Link>
+          {/* )} */}
         {(!currentUser && 
           <Link className="nav-link" to="/register">
             <span className="d-none d-md-inline">Register</span>

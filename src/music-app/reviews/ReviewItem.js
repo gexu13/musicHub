@@ -82,6 +82,7 @@ return (
           <button onClick={handleLike}>
             <AiFillLike className='text-danger d-inline me-1'/> {updatedLikes}
           </button>
+          
           {/* {isLiked ? (
             <BsHeartFill className="heart-icon liked mr-2" onClick={handleLike} />
           ) : (
