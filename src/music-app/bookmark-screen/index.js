@@ -39,7 +39,7 @@ function Bookmark() {
         
     <div>
         {bookmarks && 
-        <div className="review-section mt-0">
+        <div className="bookmark-section mt-2">
           <h2 className="font-bold text-2xl">My Bookmarks</h2>
           {bookmarks.map(bookmark=> <BookmarkPiece key={bookmark._id} bookmark={bookmark} onDelete={deleteMyBookmark}/> )}
         </div>
