@@ -5,14 +5,14 @@ import './review.css';
 import { Link } from 'react-router-dom';
 import { deleteLikedAlbum } from '../services/albums-service';
 
-function LikesDetail({ myLikes }) {
+function LikesDetail({ myLikes, onDelete}) {
 //   const token = useSelector((state) => state.apiInfo.token);
 //   const [album, setAlbum] = useState(null);
 
-  const deleteReviewHandler = async () => {
-    console.log(myLikes.albumId);
-    await deleteLikedAlbum(myLikes.albumId);
-}
+//   const deleteReviewHandler = async () => {
+//     console.log(myLikes.albumId);
+//     await deleteLikedAlbum(myLikes.albumId);
+// }
 
 //   useEffect(() => {
 //     fetch(`https://api.spotify.com/v1/albums/${review.albumId}`, {
@@ -57,7 +57,7 @@ function LikesDetail({ myLikes }) {
           </div>
         </div>
         <AiOutlineCloseCircle className="close-icon"
-        onClick={() => deleteReviewHandler()}/>
+        onClick={() => onDelete(myLikes.albumId)}/>
       </div> 
     </li>
   );

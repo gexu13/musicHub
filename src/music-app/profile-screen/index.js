@@ -9,6 +9,8 @@ import ReviewPiece from './review-detail';
 import { deleteReview } from '../services/reviews-thunks';
 import { findLikedAlbums } from '../services/albums-service';
 import LikesDetail from './likes-detail';
+import { findAllAlbumsLikes } from '../services/albums-service';
+import { deleteLikedAlbum } from '../services/albums-service';
 
 const ProfileScreen = () => {
 
@@ -16,6 +18,7 @@ const ProfileScreen = () => {
     const [profile, setProfile] = useState(currentUser);
     const [myReview, setMyReview] = useState([]);
     const [myLikes, setMyLikes] = useState([]);
+    const [albmeLikes, setAlbumLikes] = useState([]);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -45,6 +48,12 @@ const ProfileScreen = () => {
       setMyReview(result);
     };
 
+    const fetchAlbumLikes = async () => {
+      const result = await findAllAlbumsLikes();
+      setAlbumLikes(result);
+    };
+
+
     const deleteMyReview = async (id) => {
       try {
         await dispatch(deleteReview(id)); 
@@ -53,11 +62,18 @@ const ProfileScreen = () => {
         console.error(error);
       }
     };
+    
+    const deleteMyLike = async (id) => {
+      await deleteLikedAlbum(id);
+      fetchLikedAlbums();
+    };
+    
 
     useEffect(() => {
       fetchProfile();
       fetchMyReview();
       fetchLikedAlbums();
+      fetchAlbumLikes();
     }, []);
 
     return (
@@ -149,12 +165,12 @@ const ProfileScreen = () => {
             {myLikes && 
             <div className="review-section mt-0">
               <h2 className="font-bold text-2xl">My Likes</h2>
-              {myLikes.map(like => <LikesDetail key={like._id} myLikes={like}/> )}
+              {myLikes.map(like => <LikesDetail key={like._id} myLikes={like} onDelete={deleteMyLike}/> )}
             </div>
             }
 
 
-            MyLikes<pre>{JSON.stringify(myLikes, null, 2)}</pre>
+            {/* all liked album<pre>{JSON.stringify(albmeLikes, null, 2)}</pre> */}
             MyReview<pre>{JSON.stringify(myReview, null, 2)}</pre>
             Profile<pre>{JSON.stringify(profile, null, 2)}</pre>
             currentUser<pre>{JSON.stringify(currentUser, null, 2)}</pre>

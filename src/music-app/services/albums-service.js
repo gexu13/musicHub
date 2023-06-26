@@ -33,3 +33,7 @@ export const deleteLikedAlbum = async (albumId) => {
     return response.data;
 }
 
+export const findAllAlbumsLikes = async () => {
+    const response = await api.get(`${Albums_API}/all/likes`);
+    return response.data;
+}
