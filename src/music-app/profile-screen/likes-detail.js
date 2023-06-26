@@ -3,13 +3,15 @@ import { useSelector } from 'react-redux';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import './review.css';
 import { Link } from 'react-router-dom';
+import { deleteLikedAlbum } from '../services/albums-service';
 
-function LikesDetail({ myLikes, onDelete }) {
+function LikesDetail({ myLikes }) {
 //   const token = useSelector((state) => state.apiInfo.token);
 //   const [album, setAlbum] = useState(null);
 
-  const deleteReviewHandler = (id) => {
-  onDelete(id);
+  const deleteReviewHandler = async () => {
+    console.log(myLikes.albumId);
+    await deleteLikedAlbum(myLikes.albumId);
 }
 
 //   useEffect(() => {

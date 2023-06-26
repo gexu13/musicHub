@@ -11,10 +11,6 @@ import { findLikedAlbumsByUserId } from '../services/albums-service';
 import OthersLikesDetail from './others-likes-detail';
 
 
-
-
-
-
 const OthersProfileScreen = () => {
 
     const {uid} = useParams();

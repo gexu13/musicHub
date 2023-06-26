@@ -149,7 +149,7 @@ const ProfileScreen = () => {
             {myLikes && 
             <div className="review-section mt-0">
               <h2 className="font-bold text-2xl">My Likes</h2>
-              {myLikes.map(like => <LikesDetail key={like._id} myLikes={like} onDelete={deleteMyReview}/> )}
+              {myLikes.map(like => <LikesDetail key={like._id} myLikes={like}/> )}
             </div>
             }
 
