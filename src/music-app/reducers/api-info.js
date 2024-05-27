@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const client_id = "7ef9e2995db44a4ea55eb166ca757f66";
-const client_secret = "86c419e8c2cf4763892ff8de340ef70d";
+const client_id = "f114a06a63c34b5dbb4e2c3c5a515e93";
+const client_secret = "48a5f48e838440bb93f21d3e9e8f1c63";
 
 export const fetchTokenThunk = createAsyncThunk(
   'auth/fetchTokenThunk',
